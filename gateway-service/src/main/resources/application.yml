@@ -1,0 +1,14 @@
+server:
+  port: 6999
+
+spring:
+  application:
+    name: ABCis Spring Exam
+    version: 1.0
+  cloud:
+    gateway:
+      routes:
+        - id: company-microservice
+          uri: ${COMPANY_SERVICE_URL}
+          predicates:
+            - Path=/company-service/**

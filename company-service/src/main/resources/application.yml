@@ -1,0 +1,20 @@
+server:
+  port: 7000
+  servlet:
+    contextPath: /company-service
+
+spring:
+  application:
+    name: ABCis Spring Exam
+    version: 1.0
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/abcis
+    username: root
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect

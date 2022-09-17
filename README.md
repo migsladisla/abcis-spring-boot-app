@@ -8,6 +8,7 @@ For building and running the application you need:
 
 - [JDK 11](https://www.oracle.com/java/technologies/downloads/#java11)
 - [Maven 3](https://maven.apache.org)
+- [MySQL8](https://dev.mysql.com/downloads/mysql/)
 
 ## Running the application locally
 
@@ -29,10 +30,13 @@ mvn spring-boot:run
 
 ## Project Setup
 
-The gateway service runs on port 6999
-The customer service runs on port 7000
+The gateway service runs on port `6999`.
 
-Note: please make sure that `abcis` database (MySQL8) exists before running the app.
+The customer service runs on port `7000`.
+
+Note: Please make sure that `abcis` database (MySQL8) exists before running the app.
+
+The SQL script to create schema and tables is located in the root project folder.
 
 ## Sample API Request
 

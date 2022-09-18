@@ -1,15 +1,11 @@
 server:
-  port: 7000
+  port: 7004 # change the gateway env variable COMPANY_SERVICE_URL to this if this profile is active
   servlet:
     contextPath: /company-service
 
 spring:
-  profiles:
-    active: ${PROFILE}
-  main:
-    allow-circular-references: true
   application:
-    name: ABCis Spring Exam
+    name: ABCis Spring Exam PROD
     version: 1.0
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/${DB_NAME}

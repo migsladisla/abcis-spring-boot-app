@@ -33,6 +33,12 @@ public class EmployeeService {
         return employeeConverter.convertEntityToDto(record);
     }
 
+    public List<EmployeeDto> getEmployeesByCompanyId(Integer id) {
+        List<Employee> employees = employeeRepository.findByCompanyId(id);
+
+        return employeeConverter.convertEntityListToDto(employees);
+    }
+
     public EmployeeDto createEmployee(EmployeeDto employeeDto) throws ResourceNotFoundExceptionHandler {
         CompanyDto companyDto = companyService.getCompanyById(employeeDto.getCompany().getId());
 
@@ -58,14 +64,10 @@ public class EmployeeService {
 
         if (employeeDto.getCompany() != null) {
             Integer companyId = employeeDto.getCompany().getId();
-            CompanyDto existingCompany;
 
-            try {
-                // check if the new company supplied exists
-                existingCompany = companyService.getCompanyById(companyId);
-            } catch (ResourceNotFoundExceptionHandler ex) {
-                throw new ResourceNotFoundExceptionHandler("Employee record not found with ID: " + companyId);
-            }
+            // check if the new company supplied exists
+            CompanyDto existingCompany = companyService.getCompanyById(companyId);
+            if (existingCompany == null) throw new ResourceNotFoundExceptionHandler("Employee record not found with ID: " + companyId);
 
             if (existingCompany.getId() != null) {
                 Company company = Company.builder()

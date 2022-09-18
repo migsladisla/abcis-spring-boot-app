@@ -3,6 +3,7 @@ package company.services;
 import company.converters.EmployeeConverter;
 import company.dtos.CompanyDto;
 import company.dtos.CompanyEmployeesDto;
+import company.dtos.EmployeeDto;
 import company.entities.Company;
 import company.entities.Employee;
 import company.exception.ResourceNotFoundExceptionHandler;
@@ -18,6 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
+
     private final CompanyRepository companyRepository;
     private final EmployeeRepository employeeRepository;
     private final CompanyConverter companyConverter;
@@ -80,11 +82,8 @@ public class CompanyService {
                 .employees(new ArrayList<>())
                 .build();
 
-        if (employees != null) {
-            employees.forEach(employee -> {
-                companyEmployees.getEmployees().add(employeeConverter.convertEntityToDtoNoCompany(employee));
-            });
-        }
+        if (employees != null) employees.forEach(employee ->
+                companyEmployees.getEmployees().add(employeeConverter.convertEntityToDtoNoCompany(employee)));
 
         return companyEmployees;
     }

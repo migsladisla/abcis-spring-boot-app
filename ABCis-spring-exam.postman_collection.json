@@ -1,0 +1,352 @@
+{
+	"info": {
+		"_postman_id": "35fe5f4e-96c1-42a1-a13c-305b5f2a5bfd",
+		"name": "ABCis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13899200"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Create Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ABCis\",\r\n    \"address\": \"Brisbane, AU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies/company/ABCis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies",
+								"company",
+								"ABCis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies/company/20/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies",
+								"company",
+								"20",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies/company/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies",
+								"company",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 20,\r\n    \"name\": \"ABCis\",\r\n    \"address\": \"London, UK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Migs\",\r\n    \"lastName\": \"Ladisla\",\r\n    \"age\": 23,\r\n    \"address\": \"Taguig City\",\r\n    \"contactNumber\": \"09175904464\",\r\n    \"jobTitle\": \"Developer\",\r\n    \"salary\": \"70000\",\r\n    \"email\": \"nonoy@yahoo.com.ph\",\r\n    \"company\": {\r\n        \"id\": 20,\r\n        \"name\": \"ABCis\",\r\n        \"address\": \"Brisbane, AU\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/employees/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"employees",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/employees/employee/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"employees",
+								"employee",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 21,\r\n    \"company\": {\r\n        \"id\": 20,\r\n        \"name\": \"ABCis\",\r\n        \"address\": \"Brisbane, AU\"\r\n    },\r\n    \"firstName\": \"Migs\",\r\n    \"lastName\": \"Ladisla\",\r\n    \"age\": \"23\",\r\n    \"email\": \"nonoy@yahoo.com.ph\",\r\n    \"address\": \"Taguig City\",\r\n    \"contactNumber\": \"09175904464\",\r\n    \"jobTitle\": \"Developer\",\r\n    \"salary\": \"70000\",\r\n    \"createdAt\": \"2022-09-18T15:54:22.403+00:00\",\r\n    \"updatedAt\": \"2022-09-18T15:54:22.403+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6999/company-service/api/v1/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6999",
+							"path": [
+								"company-service",
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Status Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6999/company-service/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6999",
+					"path": [
+						"company-service",
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS employee (
 	last_name VARCHAR(50) NOT NULL,
 	age SMALLINT,
 	address VARCHAR(100),
+    email VARCHAR(10),
 	contact_number VARCHAR(15),
 	job_title VARCHAR(30),
 	salary VARCHAR(30),

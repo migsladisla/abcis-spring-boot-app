@@ -12,3 +12,8 @@ spring:
           uri: ${COMPANY_SERVICE_URL}
           predicates:
             - Path=/company-service/**
+
+management:
+  endpoint:
+    health:
+      show-details: "always"

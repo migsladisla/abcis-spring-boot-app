@@ -5,7 +5,7 @@ import company.dtos.CompanyDto;
 import company.dtos.CompanyEmployeesDto;
 import company.entities.Company;
 import company.entities.Employee;
-import company.exception.ResourceNotFoundException;
+import company.exception.ResourceNotFoundExceptionHandler;
 import company.repository.CompanyRepository;
 import company.converters.CompanyConverter;
 import company.repository.EmployeeRepository;
@@ -28,19 +28,19 @@ public class CompanyService {
         return companyConverter.convertEntityListToDto(companyRepository.findAll());
     }
 
-    public CompanyDto getCompanyById(Integer id) throws ResourceNotFoundException {
+    public CompanyDto getCompanyById(Integer id) throws ResourceNotFoundExceptionHandler {
         Company record =
                 companyRepository
                         .findById(id)
-                        .orElseThrow(() -> new ResourceNotFoundException("Record not found with ID: " + id));
+                        .orElseThrow(() -> new ResourceNotFoundExceptionHandler("Company record not found with ID: " + id));
 
         return companyConverter.convertEntityToDto(record);
     }
 
-    public CompanyDto getCompanyByName(String name) throws ResourceNotFoundException {
+    public CompanyDto getCompanyByName(String name) throws ResourceNotFoundExceptionHandler {
         Company record = companyRepository.findByName(name);
 
-        if (record == null) throw new ResourceNotFoundException("Record not found with ID: " + name);
+        if (record == null) throw new ResourceNotFoundExceptionHandler("Company record not found with name: " + name);
 
         return companyConverter.convertEntityToDto(record);
     }
@@ -49,12 +49,12 @@ public class CompanyService {
         return companyConverter.convertEntityToDto(companyRepository.save(companyConverter.convertDtoToEntity(companyDto)));
     }
 
-    public CompanyDto updateCompany(CompanyDto companyDto) throws ResourceNotFoundException {
-        if (companyDto.getId() == null) throw new ResourceNotFoundException("The given ID must not be null!");
+    public CompanyDto updateCompany(CompanyDto companyDto) throws ResourceNotFoundExceptionHandler {
+        if (companyDto.getId() == null) throw new ResourceNotFoundExceptionHandler("The given ID must not be null!");
 
         Company existingRecord = companyRepository.findById(companyDto.getId()).orElse(null);
 
-        if (existingRecord == null) return null;
+        if (existingRecord == null) throw new ResourceNotFoundExceptionHandler("Company record not found with ID: " + companyDto.getId());
 
         existingRecord.setName(companyDto.getName());
         existingRecord.setAddress(companyDto.getAddress());
@@ -62,16 +62,16 @@ public class CompanyService {
         return companyConverter.convertEntityToDto(companyRepository.save(existingRecord));
     }
 
-    public void deleteCompany(Integer id) throws ResourceNotFoundException {
+    public void deleteCompany(Integer id) throws ResourceNotFoundExceptionHandler {
         Company record =
                 companyRepository
                         .findById(id)
-                        .orElseThrow(() -> new ResourceNotFoundException("Record not found with ID: " + id));
+                        .orElseThrow(() -> new ResourceNotFoundExceptionHandler("Company record not found with ID: " + id));
 
         companyRepository.deleteById(record.getId());
     }
 
-    public CompanyEmployeesDto getEmployeesByCompany(Integer id) throws ResourceNotFoundException {
+    public CompanyEmployeesDto getEmployeesByCompany(Integer id) throws ResourceNotFoundExceptionHandler {
         List<Employee> employees = employeeRepository.findByCompanyId(id);
         CompanyDto companyDto = getCompanyById(id);
 

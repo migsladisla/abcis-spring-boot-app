@@ -1,13 +1,14 @@
 package company.controllers;
 
 import company.dtos.EmployeeDto;
-import company.exception.ResourceNotFoundException;
+import company.exception.ResourceNotFoundExceptionHandler;
 import company.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -20,8 +21,8 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public EmployeeDto createEmployee(@RequestBody EmployeeDto companyDto) {
-        return employeeService.createCompany(companyDto);
+    public EmployeeDto createEmployee(@RequestBody @Valid EmployeeDto companyDto) throws ResourceNotFoundExceptionHandler {
+        return employeeService.createEmployee(companyDto);
     }
 
     @GetMapping
@@ -32,35 +33,20 @@ public class EmployeeController {
 
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EmployeeDto getEmployeeById(@PathVariable Integer id) throws ResourceNotFoundException {
-        try {
-            return employeeService.getCompanyById(id);
-        } catch (ResourceNotFoundException ex) {
-            log.error(ex.getMessage(), ex);
-            throw ex;
-        }
+    public EmployeeDto getEmployeeById(@PathVariable Integer id) throws ResourceNotFoundExceptionHandler {
+        return employeeService.getEmployeeById(id);
     }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public EmployeeDto updateEmployee(@RequestBody EmployeeDto employeeDto) throws ResourceNotFoundException {
-        try {
-            return employeeService.updateCompany(employeeDto);
-        } catch (ResourceNotFoundException ex) {
-            log.error(ex.getMessage(), ex);
-            throw ex;
-        }
+    public EmployeeDto updateEmployee(@RequestBody @Valid EmployeeDto employeeDto) throws ResourceNotFoundExceptionHandler {
+        return employeeService.updateEmployee(employeeDto);
     }
 
     @DeleteMapping("/employee/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteEmployee(@PathVariable Integer id) throws ResourceNotFoundException {
-        try {
-            employeeService.deleteCompany(id);
-        } catch (ResourceNotFoundException ex) {
-            log.error(ex.getMessage(), ex);
-            throw ex;
-        }
+    public void deleteEmployee(@PathVariable Integer id) throws ResourceNotFoundExceptionHandler {
+        employeeService.deleteEmployee(id);
     }
 
 }

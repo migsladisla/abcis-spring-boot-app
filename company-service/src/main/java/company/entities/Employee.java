@@ -40,7 +40,7 @@ public class Employee {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", updatable = false, nullable = false)
     private Date createdAt;
 
     @UpdateTimestamp
@@ -50,6 +50,7 @@ public class Employee {
 
     private String age;
     private String address;
+    private String email;
     private String salary;
 
 }

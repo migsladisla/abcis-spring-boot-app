@@ -31,14 +31,16 @@ mvn spring-boot:run
 ## Project Setup
 
 The gateway service runs on port `6999`.
+Required app env vars for gateway service: ```DB_NAME=abcis;PROFILE=;DB_PASSWORD=password;DB_USER=root```
 
 The customer service runs on port `7000`.
+Required app env vars for customer service: ```COMPANY_SERVICE_URL=http://localhost:7000/company-service```
 
 Note: Please make sure that `abcis` database (MySQL8) exists before running the app.
 
 The SQL script to create schema and tables is located in the root project folder.
 
-## Sample API Request
+## Sample API Requests
 
 ```
 - [Fetch Company] GET http://localhost:6999/company-service/api/v1/companies/1
